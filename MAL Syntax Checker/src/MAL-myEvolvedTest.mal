@@ -1,0 +1,40 @@
+;Any comments in this text file refer to errors that should be detected
+;by the program. Lines without comments should not contain errors.
+THETOP:				;label has too many characters
+TOP1:				;label contains a number (non-alphabetical)
+$:				;label contains a symbol (non-alphabetical)
+
+TOP:				;label can never be branched to (warning will show up at bottom)
+ 
+        MVEI   50, FORTY	;invalid opcode
+
+        MOVEI   5,  FIVE
+
+        MOVEI   19,  TWO	;invalid octal number operand
+
+
+        MOVE    HRS, R1, R2	;too many operands
+        MOVE    RT,  R2
+        BLT     R1, FORTY	;too few operands
+
+
+        BEEQ    R1, FORTY, REG		;invalid opcode
+        MUL     FORTY, R2, R8		;invalid register number for MAL (R8)
+
+        DIV     R2, TWOTHREE, R3	;invalid identifier name (more than 5 characters)
+        ADD     R2, R3, R3
+
+        SUB     0, FORTY, R5		;wrong operand type (op1 needs to be register or identifier)
+        MUL     R5, R3, R6
+        ADD     R0, R0			;too few operands
+
+	BR	R0			;wrong operand type (needs to be label)
+
+        BR      BOTTOM			;no label to branch to (error will appear at bottom)
+REG:    MUL     R1, R2, R0
+DECT:   DIV     R0, FIVE, R6
+
+        SAAB     R0, R6, R0		;invalid opcode
+        MOVE    R0, PAY
+        END
+

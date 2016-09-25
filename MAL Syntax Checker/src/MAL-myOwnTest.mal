@@ -1,0 +1,33 @@
+;errors will be put in comments. Lines without comments should not
+;have any errors
+TOP:
+
+	MOVE R1, VAR
+	ADD R2, VAR, R1
+	MOVEI 8, VAR		;invalid octal number
+
+	SUB R1, R2, R3
+	SAB R2, R3, R4		;invalid opcode
+
+	BLT R2, R4, TOP
+	BR R1, R4, MID		;too many operands
+
+MID:	
+	BR BOT			;no label to branch to (error will appear at bottom)	
+
+	MUL R1, R2, R3
+	DIV R4, R5, R6
+	INC R7
+	DEC R8			;invalid register error	
+	BR BOTTOM		;invalid identifier, over 5 characters	
+	
+
+NEXT:				;has nothing branching to it (warning will appear at bottom)
+
+	INC R1
+	INC R2
+	ADD R3, R1, R2
+
+BOTTOM:			;ill formed label. The label is more than 5 characters long
+
+END

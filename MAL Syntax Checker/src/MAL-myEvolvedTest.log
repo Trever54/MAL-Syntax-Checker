@@ -1,0 +1,84 @@
+MAL Syntax Checker Results
+MAL-myEvolvedTest.mal
+MAL-myEvolvedTest.log
+02/24/2016
+Trever Mock
+CS3210
+----------
+
+MAL Program Listing:
+
+1. THETOP:
+** error: ill-formed label - label is more than 5 characters long
+2. TOP1:
+** error: ill-formed label - label must be composed of letters only
+3. $:
+** error: ill-formed label - label must be composed of letters only
+4. TOP:
+5. MVEI   50, FORTY
+** error: invalid opcode MVEI - did you mean 'MOVEI'?
+6. MOVEI   5,  FIVE
+7. MOVEI   19,  TWO
+** error: ill-formed operands - an operand has to be a valid register, valid octal number, or valid identifier.
+** error: invalid operand type - MOVEI requires operand 1 to be a number in octal form and operand 2 to each be a valid source or destination
+8. MOVE    HRS, R1, R2
+** error: too many operands. MOVE requires 2 operands
+9. MOVE    RT,  R2
+10. BLT     R1, FORTY
+** error: too few operands. BLT requires 3 operands
+11. BEEQ    R1, FORTY, REG
+** error: invalid opcode BEEQ - did you mean 'BEQ'?
+12. MUL     FORTY, R2, R8
+** error: ill-formed operands - an operand has to be a valid register, valid octal number, or valid identifier.
+** error: invalid operand type - MUL requires operands 1, 2, and 3 to each be a valid source or destination
+13. DIV     R2, TWOTHREE, R3
+** error: ill-formed operands - an operand has to be a valid register, valid octal number, or valid identifier.
+** error: invalid operand type - DIV requires operands 1, 2, and 3 to each be a valid source or destination
+14. ADD     R2, R3, R3
+15. SUB     0, FORTY, R5
+** error: invalid operand type - SUB requires operands 1, 2, and 3 to each be a valid source or destination
+16. MUL     R5, R3, R6
+17. ADD     R0, R0
+** error: too few operands. ADD requires 3 operands
+18. BR	R0
+**error: invalid opcode BR	R0
+19. BR      BOTTOM
+** error: ill-formed operands - an operand has to be a valid register, valid octal number, or valid identifier.
+** error: invalid operand type - BR requires it's operand to be a valid label
+20. REG:    MUL     R1, R2, R0
+21. DECT:   DIV     R0, FIVE, R6
+22. SAAB     R0, R6, R0
+**error: invalid opcode SAAB
+23. MOVE    R0, PAY
+24. END
+
+** warning: the label 'TOP' is not being branched to
+
+** warning: the label 'DECT' is not being branched to
+
+
+----------
+
+Total Lines of Code: 24
+
+Total Warnings = 2
+2 label problem warning(s)
+
+Total Errors = 19
+3 ill formed label error(s)
+4 invalid opcode error(s)
+4 ill formed operand error(s)
+5 invalid operand type error(s)
+1 too many operands error(s)
+2 too few operands error(s)
+
+Identifiers:
+FORTY
+FIVE
+TWO
+HRS
+RT
+REG
+PAY
+
+Processing Complete - MAL Program is not valid
